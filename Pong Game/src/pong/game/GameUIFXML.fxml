@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" fx:id="gameWindow" focusTraversable="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pong.game.GameUIFXMLController">
+    <children>
+      <Line endY="251.0" layoutX="300.0" layoutY="149.0" opacity="0.5" startY="-149.0" stroke="WHITE" />
+        <Rectangle fx:id="player1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" focusTraversable="true" height="60.0" layoutX="14.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" width="16.0" />
+        <Rectangle fx:id="player2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="570.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" width="16.0" />
+      <Circle fx:id="ball" fill="WHITE" layoutX="300.0" layoutY="201.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+    </children>
+</AnchorPane>
