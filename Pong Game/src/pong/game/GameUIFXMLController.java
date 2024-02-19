@@ -28,7 +28,8 @@ import javafx.util.Duration;
 public class GameUIFXMLController implements Initializable {
     Random random = new Random();
     int yAxis = random.nextInt(400 - (-400) + 1) + (-400);
-    int xAxis = -900;
+    //int yAxis = -900;
+    int xAxis = 900;
     @FXML
     private AnchorPane gameWindow;
     @FXML
@@ -37,13 +38,20 @@ public class GameUIFXMLController implements Initializable {
     private Rectangle player2;
     @FXML
     private Circle ball;
+    
+    @FXML
+    private Rectangle boundBoxTop;
+
+    @FXML
+    private Rectangle boundBoxBottom;
+    
     TranslateTransition transition;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        MovementController mvmt = new MovementController(player1, gameWindow);
+        MovementController mvmt = new MovementController(player1, player2, gameWindow);
         collisionTimer.start();
         makeTransition();
         
@@ -56,13 +64,19 @@ public class GameUIFXMLController implements Initializable {
     AnimationTimer collisionTimer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
-            checkCollision();
+            checkCollision(player1);
+            checkCollision(player2);
         }
     };
     
-    public void checkCollision(){
-        if(player1.getBoundsInParent().intersects(ball.getBoundsInParent()) || player2.getBoundsInParent().intersects(ball.getBoundsInParent())){
+    public void checkCollision(Rectangle player){
+        if(player.getBoundsInParent().intersects(ball.getBoundsInParent()) || player.getBoundsInParent().intersects(ball.getBoundsInParent())){
             System.out.println("Ball Hit!");
+            transition.stop();
+            transition.setToX(-xAxis);
+            transition.play();
+        }
+        if(boundBoxTop.getBoundsInParent().intersects(ball.getBoundsInParent()) || boundBoxBottom.getBoundsInParent().intersects(ball.getBoundsInParent())){
             transition.stop();
             transition.setToX(-xAxis);
             transition.play();

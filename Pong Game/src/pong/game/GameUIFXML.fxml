@@ -11,5 +11,7 @@
         <Rectangle fx:id="player1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" focusTraversable="true" height="60.0" layoutX="14.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" width="16.0" />
         <Rectangle fx:id="player2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="570.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" width="16.0" />
       <Circle fx:id="ball" fill="WHITE" layoutX="300.0" layoutY="201.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="boundBoxTop" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="3.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Rectangle fx:id="boundBoxBottom" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="3.0" layoutY="399.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
     </children>
 </AnchorPane>

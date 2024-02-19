@@ -31,18 +31,19 @@ import javafx.util.Duration;
 public class MovementController {
     int GAME_HEIGHT = 350;
     private BooleanProperty wPressed = new SimpleBooleanProperty();
-    private BooleanProperty aPressed = new SimpleBooleanProperty();
+    private BooleanProperty upPressed = new SimpleBooleanProperty();
     private BooleanProperty sPressed = new SimpleBooleanProperty();
-    private BooleanProperty dPressed = new SimpleBooleanProperty();
+    private BooleanProperty downPressed = new SimpleBooleanProperty();
     
-    private BooleanBinding keyPressed = wPressed.or(aPressed).or(sPressed).or(dPressed);
+    private BooleanBinding keyPressed = wPressed.or(sPressed).or(upPressed).or(downPressed);
     
     Random random = new Random();
     
     int movementSpeed = 4;
     
-    public MovementController(Rectangle player1, AnchorPane gameWindow) {
+    public MovementController(Rectangle player1, Rectangle player2, AnchorPane gameWindow) {
         this.player1 = player1;
+        this.player2 = player2;
         this.gameWindow = gameWindow;
 
         movementSetup();
@@ -55,9 +56,7 @@ public class MovementController {
             }
         }));
     }
-
     
-        
     @FXML
     private Rectangle player1;
 
@@ -67,16 +66,6 @@ public class MovementController {
     @FXML
     private AnchorPane gameWindow;
     
-    public void movementListener(){
-        keyPressed.addListener(((observableValue, aBoolean, t1) -> {
-            if(!aBoolean){
-                timer.start();
-            } else {
-                timer.stop();
-            }
-        }));
-    }
-    
     AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
@@ -85,23 +74,21 @@ public class MovementController {
                 player1.setLayoutY(player1.getLayoutY() - movementSpeed);
                 System.out.println(player1.getLayoutY());
             }
-            
 
             if(sPressed.get() && player1.getLayoutY() < GAME_HEIGHT){
                 player1.setLayoutY(player1.getLayoutY() + movementSpeed);
                 System.out.println(player1.getLayoutY());
             }
-            /*
-            if(aPressed.get()){
-                player1.setLayoutX(player1.getLayoutX() - movementSpeed);
-                
+            
+            if(upPressed.get() && player2.getLayoutY() > 0) {
+                player2.setLayoutY(player2.getLayoutY() - movementSpeed);
+                System.out.println(player2.getLayoutY());
             }
 
-            if(dPressed.get()){
-                player1.setLayoutX(player1.getLayoutX() + movementSpeed);
-                
+            if(downPressed.get() && player2.getLayoutY() < GAME_HEIGHT){
+                player2.setLayoutY(player2.getLayoutY() + movementSpeed);
+                System.out.println(player2.getLayoutY());
             }
-            */
         }
     };
     
@@ -110,17 +97,17 @@ public class MovementController {
             if(e.getCode() == KeyCode.W) {
                 wPressed.set(true);
             }
-
-            if(e.getCode() == KeyCode.A) {
-                aPressed.set(true);
-            }
-
+            
             if(e.getCode() == KeyCode.S) {
                 sPressed.set(true);
             }
-
-            if(e.getCode() == KeyCode.D) {
-                dPressed.set(true);
+            
+            if(e.getCode() == KeyCode.UP) {
+                upPressed.set(true);
+            }
+            
+            if(e.getCode() == KeyCode.DOWN) {
+                downPressed.set(true);
             }
         });
 
@@ -128,17 +115,17 @@ public class MovementController {
             if(e.getCode() == KeyCode.W) {
                 wPressed.set(false);
             }
-
-            if(e.getCode() == KeyCode.A) {
-                aPressed.set(false);
-            }
-
+            
             if(e.getCode() == KeyCode.S) {
                 sPressed.set(false);
             }
-
-            if(e.getCode() == KeyCode.D) {
-                dPressed.set(false);
+            
+            if(e.getCode() == KeyCode.UP) {
+                upPressed.set(false);
+            }
+            
+            if(e.getCode() == KeyCode.DOWN) {
+                downPressed.set(false);
             }
         });
     }
