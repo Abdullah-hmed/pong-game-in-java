@@ -26,8 +26,8 @@ public class PongGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("UserInterfaceFXML.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("GameUIFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserInterfaceFXML.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("GameUIFXML.fxml"));
         primaryStage.setTitle("Pong Game");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

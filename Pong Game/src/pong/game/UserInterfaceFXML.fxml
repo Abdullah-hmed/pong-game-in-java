@@ -18,12 +18,12 @@
             </TextField>
             <HBox alignment="CENTER" prefHeight="326.0" prefWidth="600.0">
                <children>
-                  <JFXButton alignment="CENTER" defaultButton="true" onAction="#openGameUI" prefHeight="63.0" prefWidth="155.0" ripplerFill="#868686" text="1 Player" textAlignment="CENTER">
+                  <JFXButton alignment="CENTER" defaultButton="true" onAction="#enableAI" prefHeight="63.0" prefWidth="155.0" ripplerFill="#868686" text="1 Player" textAlignment="CENTER">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="29.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" defaultButton="true" prefHeight="63.0" prefWidth="163.0" ripplerFill="#868686" text="2 Players" textAlignment="CENTER">
+                  <JFXButton alignment="CENTER" defaultButton="true" onAction="#openGameUI" prefHeight="63.0" prefWidth="163.0" ripplerFill="#868686" text="2 Players" textAlignment="CENTER">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="29.0" />
                      </font>

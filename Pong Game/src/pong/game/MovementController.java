@@ -34,12 +34,13 @@ public class MovementController {
     private BooleanProperty upPressed = new SimpleBooleanProperty();
     private BooleanProperty sPressed = new SimpleBooleanProperty();
     private BooleanProperty downPressed = new SimpleBooleanProperty();
+    private BooleanProperty escPressed = new SimpleBooleanProperty();
     
-    private BooleanBinding keyPressed = wPressed.or(sPressed).or(upPressed).or(downPressed);
+    private BooleanBinding keyPressed = wPressed.or(sPressed).or(upPressed).or(downPressed).or(escPressed);
     
     Random random = new Random();
     
-    int movementSpeed = 4;
+    int movementSpeed = 7;
     
     public MovementController(Rectangle player1, Rectangle player2, AnchorPane gameWindow) {
         this.player1 = player1;
@@ -89,6 +90,10 @@ public class MovementController {
                 player2.setLayoutY(player2.getLayoutY() + movementSpeed);
                 System.out.println(player2.getLayoutY());
             }
+            
+            if(escPressed.get()){
+                System.exit(0);
+            }
         }
     };
     
@@ -109,6 +114,10 @@ public class MovementController {
             if(e.getCode() == KeyCode.DOWN) {
                 downPressed.set(true);
             }
+            
+            if(e.getCode() == KeyCode.ESCAPE) {
+                escPressed.set(true);
+            }
         });
 
         gameWindow.setOnKeyReleased(e ->{
@@ -126,6 +135,10 @@ public class MovementController {
             
             if(e.getCode() == KeyCode.DOWN) {
                 downPressed.set(false);
+            }
+            
+            if(e.getCode() == KeyCode.ESCAPE) {
+                escPressed.set(false);
             }
         });
     }

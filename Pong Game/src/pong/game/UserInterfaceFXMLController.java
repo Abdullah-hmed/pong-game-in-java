@@ -36,7 +36,21 @@ public class UserInterfaceFXMLController implements Initializable {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Login");
+        stage.setTitle("Pong Game");
+        stage.initStyle(StageStyle.UTILITY);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
+    }
+    
+    public void enableAI() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameUIFXML.fxml"));
+        Parent root = loader.load();
+        GameUIFXMLController controller = loader.getController();
+        controller.enableAI();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Pong Game");
         stage.initStyle(StageStyle.UTILITY);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
